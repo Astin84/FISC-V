@@ -171,6 +171,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(640,790)" to="(820,790)"/>
     <wire from="(750,1490)" to="(750,1500)"/>
     <wire from="(2070,570)" to="(2070,590)"/>
+    <wire from="(520,530)" to="(580,530)"/>
     <wire from="(1000,940)" to="(1000,970)"/>
     <wire from="(1250,1180)" to="(1250,1500)"/>
     <wire from="(2030,420)" to="(2210,420)"/>
@@ -211,10 +212,10 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(1120,1830)" to="(1120,1860)"/>
     <wire from="(1010,760)" to="(1010,790)"/>
     <wire from="(1140,760)" to="(1140,830)"/>
-    <wire from="(580,490)" to="(580,520)"/>
     <wire from="(1770,610)" to="(1950,610)"/>
     <wire from="(1530,320)" to="(1530,330)"/>
     <wire from="(1510,280)" to="(1630,280)"/>
+    <wire from="(580,490)" to="(580,530)"/>
     <wire from="(800,260)" to="(800,370)"/>
     <wire from="(430,600)" to="(460,600)"/>
     <wire from="(1300,720)" to="(1300,1090)"/>
@@ -1671,10 +1672,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="text" val="Display Register"/>
       <a name="font" val="SansSerif plain 16"/>
     </comp>
-    <comp lib="0" loc="(580,520)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="label" val="Reset"/>
-    </comp>
     <comp lib="0" loc="(550,200)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="Reset"/>
@@ -1869,6 +1866,10 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="color" val="#0000ff"/>
       <a name="offcolor" val="#ffffff00"/>
       <a name="bg" val="#ffffff"/>
+    </comp>
+    <comp lib="0" loc="(520,530)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Reset"/>
     </comp>
     <comp lib="0" loc="(1740,1250)" name="Tunnel">
       <a name="label" val="Stall"/>
