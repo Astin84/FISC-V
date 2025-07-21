@@ -1,6 +1,6 @@
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.1.1/dist/font-face.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/vazir-font@latest/dist/font-face.css" rel="stylesheet">
 
-<div style="font-family: 'Shabnam', sans-serif; direction: rtl; line-height: 1.6;">
+<div style="font-family: 'Vazir', sans-serif; direction: rtl; text-align: right; line-height: 1.6;">
 
 <!-- ========================= BADGES ========================= -->
 <p align="center">
@@ -33,7 +33,7 @@
 ---
 
 ## معرفی
-FISC‑V یک هسته‌ی آموزشی RISC‑V ساده و **Single‑Cycle** است که با هدف:
+FISC‑V یک هسته‌ی آموزشی RISC‑V ساده و **Single‑Cycle** است که با هدف:  
 - یادگیری اصول پایه طراحی پردازنده  
 - پروتوتایپ سریع روی FPGA  
 - شبیه‌سازی دیداری در **Logisim**  
@@ -45,15 +45,17 @@ FISC‑V یک هسته‌ی آموزشی RISC‑V ساده و **Single‑Cycle**
 - 🌟 **Single‑Cycle Architecture**  
   هر دستورالعمل در یک چرخه‌ی کلاک کامل می‌شود.
 - 📚 **مجموعه دستورات RV32I** شامل:  
-  - حسابی/بیتی: `add`, `sub`, `sll`, `srl`, `sra`, `slt`, `sltu` و نسخه‌های فوری: `addi`, `slli`, …  
-  - منطقی: `and`, `or`, `xor` و فوری‌ها: `andi`, `ori`, …  
+  - حسابی/بیتی: `add`, `sub`, `sll`, `srl`, `sra`, `slt`, `sltu`  
+  - نسخه‌های فوری: `addi`, `slli`, `srli`, `srai`, `slti`, `sltiu`  
+  - منطقی: `and`, `or`, `xor`  
+  - فوری‌ها: `andi`, `ori`, `xori`  
   - بارگذاری/ذخیره: `lb`, `lh`, `lw`, `lbu`, `lhu`, `sw`  
   - پرش شرطی: `beq`, `bne`  
 - 🖥️ **شبیه‌سازی در Logisim**  
   مشاهده‌ی مسیر داده و واحد کنترل به صورت گرافیکی  
 - 🔧 **پیاده‌سازی سریع**  
   - آماده برای FPGAهای **Xilinx** و **Intel/Altera**  
-  - قابل استفاده با **Verilator** و ابزارهای استاندارد RISC‑V  
+  - سازگار با **Verilator** و ابزارهای استاندارد RISC‑V  
 
 ---
 
