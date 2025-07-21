@@ -1,46 +1,97 @@
-# 💡 FISC‑V: پردازنده‌ی آموزشی Single‑Cycle
+<!-- ========================= BADGES ========================= -->
+<p align="center">
+  <a href="https://github.com/yourusername/fisc-v">
+    <img src="https://img.shields.io/badge/پروژه-FISC--V-blue?style=for-the-badge" alt="Project FISC-V" />
+  </a>
+  <img src="https://img.shields.io/badge/زبان-Verilog-orange?style=for-the-badge" alt="Language: Verilog" />
+  <img src="https://img.shields.io/badge/مجوز-MIT-blue?style=for-the-badge" alt="License: MIT" />
+</p>
 
-![Language](https://img.shields.io/badge/زبان-Verilog-orange)  
-![License](https://img.shields.io/badge/مجوز-MIT-blue)
+# 💡 FISC‑V  
+**یک CPU آموزشی و ساده RISC‑V با معماری Single‑Cycle**
 
-یک هسته‌ی ساده و آموزشی RISC‑V با معماری **Single‑Cycle**، مناسب برای پروتوتایپ روی FPGA، یادگیری پایه‌های طراحی پردازنده و آزمایش در **Logisim** 🚀 :contentReference[oaicite:0]{index=0}
+<p align="center">
+  <img src="docs/assets/datapath.png" alt="Data Path Diagram" width="600"/>
+</p>
 
 ---
 
-## 🚀 ویژگی‌ها
+## 📋 فهرست مطالب
+1. [معرفی](#معرفی)  
+2. [ویژگی‌ها](#ویژگی‌ها)  
+3. [معماری کلی](#معماری-کلی)  
+4. [ساخت و شبیه‌سازی](#ساخت-و-شبیه‌سازی)  
+5. [استفاده روی FPGA](#استفاده-روی-fpga)  
+6. [ساختار پروژه](#ساختار-پروژه)  
+7. [مشارکت](#مشارکت)  
+8. [مجوز](#مجوز)  
 
-- 🌟 **معماری Single‑Cycle**  
-  اجرای کامل هر دستورالعمل (واکسش، رمزگشایی، ALU، دسترسی به حافظه و نوشتن در رجیستر) در **یک چرخه‌ی کلاک** واحد :contentReference[oaicite:1]{index=1}  
-- 📚 **مجموعه دستورات RV32I**  
-  پشتیبانی از دستورات پایه:  
-  - حسابی و بیتی: `add`, `sub`, `sll`, `srl`, `sra`, `slt`, `sltu` و نسخه‌ی فوری‌شده (`addi`, `slli`, …)  
-  - منطقی: `and`, `or`, `xor` و نسخه‌ی فوری‌شده (`andi`, `ori`, …)  
+---
+
+## معرفی
+FISC‑V یک هسته‌ی آموزشی RISC‑V ساده و **Single‑Cycle** است که با هدف:
+- یادگیری اصول پایه طراحی پردازنده  
+- پروتوتایپ سریع روی FPGA  
+- شبیه‌سازی دیداری در **Logisim**  
+پیاده‌سازی شده است.
+
+---
+
+## ویژگی‌ها
+- 🌟 **Single‑Cycle Architecture**  
+  هر دستورالعمل در یک چرخه‌ی کلاک کامل می‌شود.
+- 📚 **مجموعه دستورات RV32I** شامل:  
+  - حسابی/بیتی: `add`, `sub`, `sll`, `srl`, `sra`, `slt`, `sltu` و نسخه‌های فوری: `addi`, `slli`, …  
+  - منطقی: `and`, `or`, `xor` و فوری‌ها: `andi`, `ori`, …  
   - بارگذاری/ذخیره: `lb`, `lh`, `lw`, `lbu`, `lhu`, `sw`  
-  - پرش شرطی: `beq`, `bne` :contentReference[oaicite:2]{index=2}  
+  - پرش شرطی: `beq`, `bne`  
 - 🖥️ **شبیه‌سازی در Logisim**  
-  امکان مشاهده‌ی بصری مسیر داده (Data Path) و واحد کنترل برای درک بهتر اجرا :contentReference[oaicite:3]{index=3}  
+  مشاهده‌ی مسیر داده و واحد کنترل به صورت گرافیکی  
 - 🔧 **پیاده‌سازی سریع**  
-  - مناسب برای FPGAهای Xilinx و Intel/Altera  
-  - آماده‌ی استفاده با Verilator و ابزارهای استاندارد RISC‑V
+  - آماده برای FPGAهای **Xilinx** و **Intel/Altera**  
+  - قابل استفاده با **Verilator** و ابزارهای استاندارد RISC‑V  
 
 ---
 
-## 📐 معماری کلی
+## معماری کلی
 
 ```text
-┌─────┐   ┌──────┐   ┌─────┐   ┌─────┐   ┌─────┐
-│ IF  │ → │ ID   │ → │ EX  │ → │ MEM │ → │ WB  │
-│(Fetch)│   │(Decode)│   │(ALU)│   │(Load/Store)│   │(Write)│
-└─────┘   └──────┘   └─────┘   └─────┘   └─────┘
+┌─────────┐   ┌──────────┐   ┌────────┐   ┌───────────┐   ┌─────────┐
+│  IF     │ → │  ID      │ → │  EX    │ → │   MEM     │ → │   WB    │
+│ (Fetch) │   │ (Decode) │   │ (ALU)  │   │ (Load/Store)│ │ (Write) │
+└─────────┘   └──────────┘   └────────┘   └───────────┘   └─────────┘
+
+IF: واکشی دستور از حافظه
+
+ID: رمزگشایی و خوانش ثبات‌ها
+
+EX: عملیات ALU و محاسبه آدرس
+
+MEM: دسترسی خواندن/نوشتن به حافظه داده
+
+WB: نوشتن نتایج در فایل ثبات
 
 
-🤝 مشارکت
- (Fork) کنید
+# کلون مخزن
+git clone https://github.com/yourusername/fisc-v.git
+cd fisc-v
 
-شاخه‌ی خود را ایجاد کنید (git checkout -b feature/YourFeature)
+# شبیه‌سازی با Verilator
+mkdir build && cd build
+verilator --cc ../src/top.sv --exe ../tests/testbench.cpp
+make -C obj_dir -j -f Vtop.mk Vtop
+./obj_dir/Vtop
 
-تغییرات را کمیت کنید (git commit -m "Add awesome feature")
 
-پوش کنید و Pull Request بزنید 🚀
-
+fisc-v/
+├── src/               # کد Verilog
+│   ├── if_unit.sv
+│   ├── id_unit.sv
+│   ├── ex_unit.sv
+│   ├── mem_unit.sv
+│   └── wb_unit.sv
+├── tests/             # بنچ‌تست‌ها (C++)
+├── docs/              # دیاگرام‌ها و فایل‌های Logisim
+├── build/             # دایرکتوری شبیه‌سازی
+└── README.md
 
