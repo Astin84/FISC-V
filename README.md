@@ -15,7 +15,7 @@
 **یک CPU آموزشی و ساده RISC‑V با معماری Single‑Cycle**
 
 <p align="center">
-  <img src="[docs/assets/datapath.png](https://github.com/Astin84/FISC-V/blob/main/PICs/DataPath.png)" alt="Data Path Diagram" width="600"/>
+  <img src="https://github.com/Astin84/FISC-V/blob/main/PICs/DataPath.png?raw=true" alt="Data Path Diagram" width="600"/>
 </p>
 
 ---
