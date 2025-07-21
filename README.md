@@ -1,3 +1,6 @@
+
+<div style="font-family: 'Shabnam', sans-serif; direction: rtl; line-height: 1.6;">
+
 <!-- ========================= BADGES ========================= -->
 <p align="center">
   <a href="https://github.com/yourusername/fisc-v">
