@@ -73,11 +73,11 @@ MEM: دسترسی خواندن/نوشتن به حافظه داده
 
 WB: نوشتن نتایج در فایل ثبات
 
-# کلون مخزن
+## کلون مخزن
 git clone https://github.com/yourusername/fisc-v.git
 cd fisc-v
 
-# شبیه‌سازی با Verilator
+## شبیه‌سازی با Verilator
 mkdir build && cd build
 verilator --cc ../src/top.sv --exe ../tests/testbench.cpp
 make -C obj_dir -j -f Vtop.mk Vtop
